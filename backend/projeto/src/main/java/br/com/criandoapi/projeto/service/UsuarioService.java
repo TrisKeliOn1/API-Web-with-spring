@@ -23,4 +23,14 @@ public class UsuarioService {
         Usuario usuarioNovo = repository.save(usuario);
         return usuarioNovo;
     }
+
+    public Usuario editarUsuario(Usuario usuario) {
+        Usuario usuarioNovo = repository.save(usuario);
+        return usuarioNovo;
+    }
+
+    public boolean excluirUsuario(Integer id) {
+        repository.deleteById(id);
+        return true;
+    }
 }

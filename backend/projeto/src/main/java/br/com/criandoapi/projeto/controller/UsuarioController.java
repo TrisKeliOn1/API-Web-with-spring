@@ -13,8 +13,6 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/usuarios")
 public class UsuarioController {
-    @Autowired
-    private IUsuario dao;
 
     private UsuarioService usuarioService;
 
@@ -33,13 +31,12 @@ public class UsuarioController {
 
     @PutMapping
     public ResponseEntity<Usuario> editarUsuario (@RequestBody Usuario usuario) {
-        Usuario usuarioNovo = dao.save(usuario);
-        return ResponseEntity.status(201).body(usuarioNovo);
+        return ResponseEntity.status(200).body(usuarioService.editarUsuario(usuario));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> excluirUsuario (@PathVariable Integer id) {
-        dao.deleteById(id);
+        usuarioService.excluirUsuario(id);
         return ResponseEntity.status(204).build();
     }
 
